@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RALPH - Calendrier</title>
+
+    <style>
+        * {
+            color: #000000;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #05FF93;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 19px;
+        }
+
+        .home-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #8DF525;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .calendar-container {
+            width: 100%;
+            max-width: none;
+        }
+
+        .calendar {
+            border: solid;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .month {
+            background-color: #8DF525;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            font-size: 18px;
+        }
+
+        .month-buttons {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .prev-month, .next-month {
+            color: #fff;
+            background-color: #E2FF26;
+            cursor: pointer;
+            font-size: 18px;
+            margin: 0 10px;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .prev-month:hover, .next-month:hover {
+            background-color: #2980b9;
+        }
+
+        .prev-month {
+            left: 10px;
+            background-image: none;
+        }
+
+        .next-month {
+            right: 10px;
+            background-image: none;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .calendar-table th, .calendar-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .calendar-table th {
+            background-color: #ecf0f1;
+        }
+
+        .calendar-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .calendar-table td:hover {
+            background-color: #f2f2f2;
+        }
+
+        .calendar-table td.current-date {
+            background-color: #26FF5C;
+            color: #000000;
+        }
+
+        footer {
+            background-color: #ecf0f1;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer button {
+            padding: 10px;
+            border-radius: 50%;
+            background-color: transparent;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        footer button:nth-child(1) {
+            background-image: url('brosse-a-dents.png');
+        }
+
+        footer button:nth-child(2) {
+            background-image: url('trophee.png');
+        }
+
+        .calendar-button {
+            width: 50px;
+            height: 50px;
+        }
+
+        footer button:nth-child(3) {
+            background-image: url('calendrier.png');
+        }
+
+        footer button:nth-child(4) {
+            background-image: url('une-commode.png');
+        }
+
+        footer button:nth-child(5) {
+            background-image: url('panier.png');
+        }
+
+        @media only screen and (max-width: 600px) {
+            .calendar-container {
+                width: 100%;
+                max-width: none;
+            }
+
+            .calendar {
+                border-radius: 0;
+            }
+
+            .month {
+                font-size: 16px;
+                padding: 8px;
+            }
+
+            .prev-month, .next-month {
+                font-size: 14px;
+                padding: 4px 8px;
+            }
+
+            .calendar-table th, .calendar-table td {
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="calendar-container">
+            <div class="calendar">
+                <div class="calendar center-content">
+                    <div class="month">
+                        <button class="prev-month">&lt;</button>
+                        <button class="next-month">&gt;</button>
+                        <div class="month-buttons">
+                            <div class="month-year">January 2024</div>
+                        </div>
+                    </div>
+                    <table class="calendar-table" id="calendarTable">
+                        <thead>
+                            <tr>
+                                <th>Sun</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <h1>
+            Mettre des trucs ici. Za3ma des graphismes ou des ptits dessins golris. Moi j'aime bien les nuggets en forme de dinosaure perso.
+        </h1>
+    </main>
+
+    <footer>
+        <button onclick="navigate('Hygiene')"></button>
+        <button onclick="navigate('Trophies')"></button>
+        <button class="calendar-button" onclick="navigate('Calendar')"></button>
+        <button onclick="navigate('Inventory')"></button>
+        <button onclick="navigate('Shop')"></button>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const monthElement = document.querySelector('.month');
+            let currentMonth = new Date(); // Initialisez avec la date actuelle
+            let selectedMonth;
+            document.getElementById('calendarTable').addEventListener('click', function (event) {
+    const clickedCell = event.target;
+
+    if (clickedCell.tagName === 'TD' && clickedCell.classList.contains('current-date')) {
+        if (selectedMonth) {
+            const clickedDate = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), parseInt(clickedCell.textContent));
+            const destinationURL = `event-page.html?date=${clickedDate.toISOString()}`;
+            window.location.href = destinationURL;
+        }
+    }
+});
+
+            function navigateMonth(direction) {
+                if (!selectedMonth) {
+                    selectedMonth = new Date();
+                }
+
+                selectedMonth = new Date(selectedMonth);
+                selectedMonth.setMonth(selectedMonth.getMonth() + direction);
+
+                if (selectedMonth.getMonth() === 12) {
+                    selectedMonth.setFullYear(selectedMonth.getFullYear() + 1);
+                    selectedMonth.setMonth(0);
+                } else if (selectedMonth.getMonth() === -1) {
+                    selectedMonth.setFullYear(selectedMonth.getFullYear() - 1);
+                    selectedMonth.setMonth(11);
+                }
+
+                const formattedMonth = selectedMonth.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+                if (!isNaN(selectedMonth.getTime())) {
+                    currentMonth = selectedMonth;
+                    monthElement.querySelector('.month-year').textContent = formattedMonth;
+                    console.log('Navigated to:', formattedMonth);
+                    generateCalendar(selectedMonth);
+                }
+            }
+
+            const prevMonthButton = document.querySelector('.prev-month');
+            const nextMonthButton = document.querySelector('.next-month');
+
+            if (prevMonthButton && nextMonthButton) {
+                prevMonthButton.addEventListener('click', function () {
+                    console.log('Clicked on Prev Button');
+                    navigateMonth(-1);
+                });
+
+                nextMonthButton.addEventListener('click', function () {
+                    console.log('Clicked on Next Button');
+                    navigateMonth(1);
+                });
+            }
+
+            generateCalendar(currentMonth);
+        });
+
+        function generateCalendar(selectedMonth) {
+            const tableBody = document.querySelector('.calendar-table tbody');
+            tableBody.innerHTML = '';
+
+            const daysInMonth = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth() + 1, 0).getDate();
+            const firstDayOfMonth = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), 1).getDay();
+
+            let dayCount = 1;
+            for (let i = 0; i < 6; i++) {
+                const row = document.createElement('tr');
+                for (let j = 0; j < 7; j++) {
+                    const cell = document.createElement('td');
+                    if ((i === 0 && j >= firstDayOfMonth) || (i > 0 && dayCount <= daysInMonth)) {
+                        cell.textContent = dayCount;
+                        dayCount++;
+
+                        const cellDate = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), parseInt(cell.textContent));
+                        if (cellDate.toDateString() === new Date().toDateString()) {
+                            cell.classList.add('current-date');
+                        }
+
+                        // Ajout de l'attribut data-date avec la date correspondante
+                        cell.setAttribute('data-date', cellDate.toISOString());
+                    }
+                    row.appendChild(cell);
+                }
+                tableBody.appendChild(row);
+            }
+        }
+    </script>
+    <script src="navigation.js"></script>
+</body>
+</html>

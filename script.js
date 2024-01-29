@@ -8,7 +8,7 @@ function changeRalphExpression(expression) {
 function changeRalphExpressionBasedOnLove(value) {
     let expression = "";
 
-    if (value >= 50 && value <= 100) {
+    if (value > 50 && value <= 100) {
         expression = "happy";
     } else if (value === 50) {
         expression = "neutral";
@@ -17,7 +17,6 @@ function changeRalphExpressionBasedOnLove(value) {
     } else if (value < 25) {
         expression = "sad";
     }
-
     // Change l'expression de Ralph
     changeRalphExpression(expression);
 }
@@ -54,6 +53,9 @@ function updateBars() {
     loveBar.style.background = `linear-gradient(to right, white ${loveValue}, transparent ${loveValue})`;
     hungerBar.style.background = `linear-gradient(to right, white ${hungerValue}, transparent ${hungerValue})`;
 }
+
+// Fonction pour gérer la navigation
+
 
 // Appel initial pour mettre à jour les barres et l'expression de Ralph
 updateBars();

@@ -1,0 +1,106 @@
+/* calendar.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ecf0f1;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calendar-container {
+    width: 80%;
+    max-width: 600px;
+    overflow-x: auto; /* Ajoute un défilement horizontal si nécessaire */
+}
+
+.calendar {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.month {
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: relative; /* Ajoute une position relative pour les boutons de navigation */
+}
+
+.month-buttons {
+    text-align: center;
+    padding: 10px;
+}
+
+.prev-month, .next-month {
+    color: #3498db;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.prev-month {
+    left: 10px;
+}
+
+.next-month {
+    right: 10px;
+}
+
+.calendar-table {
+    width: 100%; /* Utilise 100% de la largeur de la table pour le défilement horizontal */
+    border-collapse: collapse;
+}
+
+.calendar-table th, .calendar-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.calendar-table th {
+    background-color: #ecf0f1;
+}
+
+.calendar-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    transition: background-color 0.3s; /* Ajoute une transition pour un changement en douceur */
+}
+
+.calendar-table td:hover {
+    background-color: #f2f2f2; /* Couleur de fond au survol */
+}
+
+.calendar-table td.current-date {
+    background-color: #3498db; /* Couleur de fond pour la date actuelle */
+    color: #fff; /* Couleur du texte pour la date actuelle */
+}
+
+@media only screen and (max-width: 600px) {
+    .calendar-container {
+        width: 100%; /* Ajuste la largeur pour occuper tout l'écran */
+        max-width: none; /* Retire la largeur maximale pour permettre une adaptation complète */
+    }
+
+    .calendar {
+        border-radius: 0; /* Retire la bordure arrondie sur les écrans plus petits */
+    }
+
+    .month {
+        font-size: 16px; /* Ajuste la taille du texte du mois */
+        padding: 8px; /* Ajuste la marge intérieure du mois */
+    }
+
+    .prev-month, .next-month {
+        font-size: 14px; /* Ajuste la taille du texte des boutons de navigation */
+    }
+
+    .calendar-table th, .calendar-table td {
+        padding: 8px; /* Ajuste la marge intérieure dans la table */
+    }
+}
