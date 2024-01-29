@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(135deg, #27a832, #78c27b);
+    background-repeat: space;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+header {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80%;
+    height: 10px;
+    background: #1f1f1f;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    margin-right: 10px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: white;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    margin: 0;
+    appearance: none; /* Ajoutez cette ligne pour définir la propriété standard 'appearance' */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    display: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+    display: none;
+}
+
+input[type="range"]::-ms-thumb {
+    display: none;
+}
+
+main {
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.ralph {
+    height: 300px;
+    width: 300px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid #000;
+}
+
+footer {
+    background-color: #ecf0f1;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+button:nth-child(1) {
+    background-image: url('brosse-a-dents.png');
+}
+
+button:nth-child(2) {
+    background-image: url('trophee.png');
+}
+
+.calendar-button {
+    width: 50px;
+    height: 50px;
+}
+
+button:nth-child(3) {
+    background-image: url('calendrier.png');
+}
+
+button:nth-child(4) {
+    background-image: url('une-commode.png');
+}
+
+button:nth-child(5) {
+    background-image: url('panier.png');
+}
+
+/* Styles pour le slider de faim */
+/* Styles pour le slider de faim */
+#hunger-bar {
+    width: 80%; /* Ajustez la largeur selon vos préférences */
+    height: 10px;
+    background: linear-gradient(to right, #e74c3c 50%, #ecf0f1 50%);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    margin-right: 10px;
+}
+
+/* Styles pour le slider d'amour */
+#love-bar {
+    width: 80%; /* Ajustez la largeur selon vos préférences */
+    height: 10px;
+    background: linear-gradient(to right, #3498db 50%, #ecf0f1 50%);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    margin-right: 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    body {
+        overflow: hidden;
+    }
+
+    .slider {
+        width: 100%;
+        max-width: none;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    footer {
+        flex-direction: row;
+        align-items: center;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .ralph {
+        width: 70vw;
+        height: 70vw;
+        max-width: none;
+    }
+}
