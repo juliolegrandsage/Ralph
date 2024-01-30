@@ -44,6 +44,55 @@
             border-radius: 4px;
             cursor: pointer;
         }
+        
+footer {
+    background-color: #ecf0f1;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer button {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+footer button:nth-child(1) {
+    background-image: url('brosse-a-dents.png');
+}
+
+footer button:nth-child(2) {
+    background-image: url('trophee.png');
+}
+
+footer .calendar-button {
+    width: 50px;
+    height: 50px;
+}
+
+footer button:nth-child(3) {
+    background-image: url('calendrier.png');
+}
+
+footer button:nth-child(4) {
+    background-image: url('une-commode.png');
+}
+
+footer button:nth-child(5) {
+    background-image: url('panier.png');
+}
+
     </style>
     <title>Event Page</title>
 </head>
@@ -58,13 +107,48 @@
             <textarea id="eventDescription" name="eventDescription"></textarea>
 
             <label for="eventDate">Event Date:</label>
-            <input type="date" id="eventDate" name="eventDate" required>
+            <input type="date" id="dateEvent" name="dateEvent" required>
+            
 
-            <label for="eventDuration">Event Duration (hours):</label>
-            <input type="number" id="eventDuration" name="eventDuration" min="1" required>
+            <label for="startTime">Start Time:</label>
+            <input type="time" id="startTime" name="startTime" required>
+
+            <label for="endTime">End Time:</label>
+            <input type="time" id="endTime" name="endTime" required>
 
             <button type="submit">Save Event</button>
         </form>
     </div>
+    <footer>
+        <button onclick="navigate('Hygiene')"></button>
+        <button onclick="navigate('Trophies')"></button>
+        <button class="calendar-button" onclick="navigate('Calendar')"></button>
+        <button onclick="navigate('Inventory')"></button>
+        <button onclick="navigate('Shop')"></button>
+    </footer>
+    
+    <script src="navigation.js"></script>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Extraction de la date et des heures de début et de fin de l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const startDateParam = urlParams.get('startDate');
+        const startTimeParam = urlParams.get('startTime');
+        const endTimeParam = urlParams.get('endTime');
+
+        if (startDateParam && startTimeParam && endTimeParam) {
+            // Conversion de la date, de l'heure de début et de l'heure de fin
+            // au format des inputs date et time
+            const formattedStartDate = new Date(startDateParam).toISOString().split('T')[0];
+            const formattedStartTime = startTimeParam.substring(0, 5); // Format HH:mm
+            const formattedEndTime = endTimeParam.substring(0, 5); // Format HH:mm
+
+            // Configuration des inputs dateEvent, startTime et endTime
+            document.getElementById('dateEvent').value = formattedStartDate;
+            document.getElementById('startTime').value = formattedStartTime;
+            document.getElementById('endTime').value = formattedEndTime;
+        }
+    });
+</script>
 </html>

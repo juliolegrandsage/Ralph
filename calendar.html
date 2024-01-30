@@ -246,25 +246,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const monthElement = document.querySelector('.month');
-            let currentMonth = new Date(); // Initialisez avec la date actuelle
-            let selectedMonth;
-            document.getElementById('calendarTable').addEventListener('click', function (event) {
-    const clickedCell = event.target;
-
-    if (clickedCell.tagName === 'TD' && clickedCell.classList.contains('current-date')) {
-        if (selectedMonth) {
-            const clickedDate = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), parseInt(clickedCell.textContent));
-            const destinationURL = `event-page.html?date=${clickedDate.toISOString()}`;
-            window.location.href = destinationURL;
-        }
-    }
-});
+            const monthYearElement = monthElement.querySelector('.month-year');
+            let currentMonth = new Date();
+            let selectedMonth = new Date();
 
             function navigateMonth(direction) {
-                if (!selectedMonth) {
-                    selectedMonth = new Date();
-                }
-
                 selectedMonth = new Date(selectedMonth);
                 selectedMonth.setMonth(selectedMonth.getMonth() + direction);
 
@@ -280,7 +266,13 @@
 
                 if (!isNaN(selectedMonth.getTime())) {
                     currentMonth = selectedMonth;
-                    monthElement.querySelector('.month-year').textContent = formattedMonth;
+
+                    if (monthYearElement) {
+                        monthYearElement.textContent = formattedMonth;
+                    } else {
+                        console.error('Element with class "month-year" not found.');
+                    }
+
                     console.log('Navigated to:', formattedMonth);
                     generateCalendar(selectedMonth);
                 }
@@ -300,6 +292,17 @@
                     navigateMonth(1);
                 });
             }
+
+            // Ajout d'un gestionnaire d'événements pour les clics sur les cellules du calendrier
+            document.querySelector('.calendar-table').addEventListener('click', function (event) {
+                const clickedCell = event.target.closest('td');
+                if (clickedCell) {
+                    const clickedDate = clickedCell.getAttribute('data-date');
+                    console.log('Selected Date:', clickedDate);
+                    // Redirige vers event-page.html avec la date en paramètre
+                    window.location.href = 'event-page.html?date=' + encodeURIComponent(clickedDate);
+                }
+            });
 
             generateCalendar(currentMonth);
         });
@@ -333,7 +336,11 @@
                 tableBody.appendChild(row);
             }
         }
+
+        function navigate(page) {
+            console.log('Navigated to:', page);
+            window.location.href = page; // Redirige vers la page spécifiée
+        }
     </script>
-    <script src="navigation.js"></script>
 </body>
 </html>
