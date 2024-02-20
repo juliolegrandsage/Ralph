@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>RALPH App</title>
+</head>
+<body>
+    
+    <header>
+        <div class="progress-bars">
+            <input type="range" id="love-bar" value="50">
+            <input type="range" id="hunger-bar" value="50">
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="ralph" id="ralph"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <button onclick="navigate('Hygiene')"></button>
+        <button onclick="navigate('Trophies')"></button>
+        <button class="calendar-button" onclick="navigate('Calendar')"></button>
+        <button onclick="navigate('Inventory')"></button>
+        <button onclick="navigate('Shop')"></button>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="navigation.js"></script>
+</body>
+</html>

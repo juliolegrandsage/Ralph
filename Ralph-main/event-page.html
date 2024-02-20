@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ecf0f1;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .event-container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+footer {
+    background-color: #ecf0f1;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer button {
+    padding: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+footer button:nth-child(1) {
+    background-image: url('brosse-a-dents.png');
+}
+
+footer button:nth-child(2) {
+    background-image: url('trophee.png');
+}
+
+footer .calendar-button {
+    width: 50px;
+    height: 50px;
+}
+
+footer button:nth-child(3) {
+    background-image: url('calendrier.png');
+}
+
+footer button:nth-child(4) {
+    background-image: url('une-commode.png');
+}
+
+footer button:nth-child(5) {
+    background-image: url('panier.png');
+}
+
+    </style>
+    <title>Event Page</title>
+</head>
+<body>
+    <div class="event-container">
+        <h1>Create New Event</h1>
+        <form>
+            <label for="eventName">Event Name:</label>
+            <input type="text" id="eventName" name="eventName" required>
+
+            <label for="eventDescription">Event Description:</label>
+            <textarea id="eventDescription" name="eventDescription"></textarea>
+
+            <label for="eventDate">Event Date:</label>
+            <input type="date" id="dateEvent" name="dateEvent" required>
+            
+
+            <label for="startTime">Start Time:</label>
+            <input type="time" id="startTime" name="startTime" required>
+
+            <label for="endTime">End Time:</label>
+            <input type="time" id="endTime" name="endTime" required>
+
+            <button type="submit">Save Event</button>
+        </form>
+    </div>
+    <footer>
+        <button onclick="navigate('Hygiene')"></button>
+        <button onclick="navigate('Trophies')"></button>
+        <button class="calendar-button" onclick="navigate('Calendar')"></button>
+        <button onclick="navigate('Inventory')"></button>
+        <button onclick="navigate('Shop')"></button>
+    </footer>
+    
+    <script src="navigation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Extraction de la date de l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedDate = urlParams.get('date');
+
+            if (selectedDate) {
+                // Configuration de la date dans le champ dateEvent
+                document.getElementById('dateEvent').value = selectedDate;
+            }
+        });
+    </script>
+</body>
+</html>
