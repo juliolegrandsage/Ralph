@@ -128,27 +128,17 @@ footer button:nth-child(5) {
     </footer>
     
     <script src="navigation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Extraction de la date de l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedDate = urlParams.get('date');
+
+            if (selectedDate) {
+                // Configuration de la date dans le champ dateEvent
+                document.getElementById('dateEvent').value = selectedDate;
+            }
+        });
+    </script>
 </body>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Extraction de la date et des heures de début et de fin de l'URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const startDateParam = urlParams.get('startDate');
-        const startTimeParam = urlParams.get('startTime');
-        const endTimeParam = urlParams.get('endTime');
-
-        if (startDateParam && startTimeParam && endTimeParam) {
-            // Conversion de la date, de l'heure de début et de l'heure de fin
-            // au format des inputs date et time
-            const formattedStartDate = new Date(startDateParam).toISOString().split('T')[0];
-            const formattedStartTime = startTimeParam.substring(0, 5); // Format HH:mm
-            const formattedEndTime = endTimeParam.substring(0, 5); // Format HH:mm
-
-            // Configuration des inputs dateEvent, startTime et endTime
-            document.getElementById('dateEvent').value = formattedStartDate;
-            document.getElementById('startTime').value = formattedStartTime;
-            document.getElementById('endTime').value = formattedEndTime;
-        }
-    });
-</script>
 </html>

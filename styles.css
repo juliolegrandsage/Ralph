@@ -9,7 +9,7 @@ html, body {
 }
 
 body {
-    background: linear-gradient(135deg, #27a832, #78c27b);
+    background-color: #7FEB89;
     background-repeat: space;
     justify-content: space-around;
     margin: 0;
@@ -19,7 +19,7 @@ body {
 }
 
 header {
-    color: white;
+    color: #EBE67F;
     padding: 10px;
     text-align: center;
     position: relative;
@@ -90,7 +90,6 @@ main {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    border: 2px solid #000;
 }
 
 footer {

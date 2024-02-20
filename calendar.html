@@ -174,7 +174,13 @@
         footer button:nth-child(5) {
             background-image: url('panier.png');
         }
-
+        .happyralphimg{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 10%;
+                width: 30%;
+            }
         @media only screen and (max-width: 600px) {
             .calendar-container {
                 width: 100%;
@@ -198,10 +204,22 @@
             .calendar-table th, .calendar-table td {
                 padding: 6px;
             }
+            .happyralphimg{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 60%;
+                width: 90%;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+    <h1>
+        Ralph's calendar
+    </h1>
+    </header>
     <main>
         <div class="calendar-container">
             <div class="calendar">
@@ -230,15 +248,13 @@
                 </div>
             </div>
         </div>
-        <h1>
-            Mettre des trucs ici. Za3ma des graphismes ou des ptits dessins golris. Moi j'aime bien les nuggets en forme de dinosaure perso.
-        </h1>
+        <img src="ralph_happy.svg" alt="" srcset="" class="happyralphimg">
     </main>
 
     <footer>
         <button onclick="navigate('Hygiene')"></button>
         <button onclick="navigate('Trophies')"></button>
-        <button class="calendar-button" onclick="navigate('Calendar')"></button>
+        <button class="calendar-button" onclick="navigate('index.html')"></button>
         <button onclick="navigate('Inventory')"></button>
         <button onclick="navigate('Shop')"></button>
     </footer>
